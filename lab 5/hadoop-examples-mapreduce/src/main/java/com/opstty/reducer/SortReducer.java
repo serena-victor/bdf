@@ -24,20 +24,18 @@ public class SortReducer extends Reducer<LongWritable, Text, Text, FloatWritable
 
         for (Text val : values) {
             String line[] = val.toString().split(";");
-            String id = line[line.length - 1];
             try {
-                float height = Float.parseFloat(line[0]);
+                String id = line[0];
+                float height = Float.parseFloat(line[line.length-1]);
                 hmap.put(id, height);
-
             } catch (NumberFormatException e) {
                 e.printStackTrace();
-                continue;
             }
         }
-
         Map<String, Float> sorted = sortByValues(hmap);
 
         for (String k : sorted.keySet()) {
+
             Text keyout = new Text(k);
             FloatWritable valueout = new FloatWritable(sorted.get(k));
             context.write(keyout, valueout);

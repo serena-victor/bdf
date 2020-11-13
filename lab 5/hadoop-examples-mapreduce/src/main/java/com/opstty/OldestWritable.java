@@ -8,6 +8,8 @@ import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Writable;
 
+import java.util.Objects;
+
 public class OldestWritable implements Writable {
     private IntWritable o1;
     private LongWritable o2;
@@ -40,4 +42,21 @@ public class OldestWritable implements Writable {
     public String toString() {
         return o1.toString() + ";" + o2.toString();
     }
+  
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof OldestWritable)) {
+            return false;
+        }
+        
+        OldestWritable oldestWritable = (OldestWritable) o;
+        return Objects.equals(o1, oldestWritable.o1) && Objects.equals(o2, oldestWritable.o2);
+    }
+
+ 
+
+
 }

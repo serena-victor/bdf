@@ -12,3 +12,6 @@ public class DistrictsReducer extends Reducer<Text, NullWritable, Text, NullWrit
         context.write(key, NullWritable.get());
     }
 }
+
+
+

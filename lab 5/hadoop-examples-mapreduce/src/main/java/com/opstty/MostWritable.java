@@ -3,6 +3,7 @@ package com.opstty;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
+import java.util.Objects;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Writable;
@@ -38,5 +39,18 @@ public class MostWritable implements Writable {
     @Override
     public String toString() {
         return o1.toString() + ";" + o2.toString();
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof MostWritable)) {
+            return false;
+        }
+        
+        MostWritable mostWritable = (MostWritable) o;
+        return Objects.equals(o1, mostWritable.o1) && Objects.equals(o2, mostWritable.o2);
     }
 }
