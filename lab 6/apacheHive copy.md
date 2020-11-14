@@ -125,9 +125,9 @@ You are going to write some Hive SQL queries on the remarkable trees of Paris us
     > then we load the data into the table and remove the first line (header) for some reason we can use delete from clause so we overwrite the table.
 
         load data inpath '/user/vserena/dataset/trees.csv' overwrite into table treesexternal;
-    > we can also use the following command if we dont specify the tblproperties clause:
+     > we can also use the following command if we dont specify the tblproperties clause:
      
-    > insert overwrite table treesexternal select * from treesexternal where id is not null;
+     > insert overwrite table treesexternal select * from treesexternal where id is not null;
 
 
 - Create an internal table called trees internal.
